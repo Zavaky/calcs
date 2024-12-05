@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piston Engine Displacement Calculator</title>
+</head>
+<body>
+    <h1>Fuel Consumpsion Calculator</h1>
+    <form>
+        Amount of fuel tanked (L): <input type="text" name="Fuel" id="fuel" oninput="PALI_KURWA()"><br><br>
+        Distance driven (km): <input type="text" name="KM" id="km" oninput="PALI_KURWA()"> <br><br>
+    </form>
+    <p id="ile_zjaral"></p>
+    <script>
+        function PALI_KURWA() {
+            let f = parseFloat(document.getElementById("fuel").value);
+            let k = parseFloat(document.getElementById("km").value);
+
+            let ilosc_zjaranego = f / (k/100)
+            
+            document.getElementById("ile_zjaral").textContent = "Fuel consumption is equal to: "+ ilosc_zjaranego.toFixed(2) +"L/100km";
+        }
+    </script>
+    
+    <h1>Piston Engine Displacement Calculator</h1>
+    <form>
+        Bore (in mm): <input type="text" name="Bore" id="bore" oninput="formula()"><br><br>
+        Stroke (in mm): <input type="text" name="Stroke" id="stroke" oninput="formula()"> <br><br>
+        Number of cylinders: <input type="text" name="Number of Cylinders" id="cylinders" oninput="formula()"><br><br>
+    </form>
+    <p id="result"></p>
+    <script>
+        function formula() {
+            let b = parseFloat(document.getElementById("bore").value);
+            let s = parseFloat(document.getElementById("stroke").value);
+            let n = parseInt(document.getElementById("cylinders").value);
+
+            let displacement = (s * Math.PI * (b/2)**2 * n)/1000;
+            
+            document.getElementById("result").textContent = "Engine displacement is equal to: "+ Math.round(displacement) +" cm³";
+        }
+    </script>
+</body>
+</html>
